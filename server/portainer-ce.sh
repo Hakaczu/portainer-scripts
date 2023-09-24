@@ -1,4 +1,5 @@
 #!/bin/bash
+
 port=$(../get_mikrus_port.sh)
 
 if [ "$(docker volume ls -f name=portainer_data | awk '{print $NF}' | grep -E '^'portainer_data'$')" ]; then
