@@ -2,10 +2,8 @@
 
 port=$(../get_mikrus_port.sh)
 
-if [ "$(docker volume ls -f name=portainer_data | awk '{print $NF}' | grep -E '^'portainer_data'$')" ]; then
-    return 0
-else
-    return 1
+if ! docker volume ls | grep -q portainer_data ; then
+    docker volume create portainer_data
 fi
 
 docker run -d \
